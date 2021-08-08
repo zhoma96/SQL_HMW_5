@@ -1,0 +1,8 @@
+ALTER TABLE users
+ADD COLUMN age_days int;
+UPDATE users SET age_days = datediff('2021-08-08', birthday_at);
+ALTER TABLE users
+ADD COLUMN age INT;
+UPDATE users SET age = age_days / 365;
+
+SELECT avg(age) FROM shop.users
